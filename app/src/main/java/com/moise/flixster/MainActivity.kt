@@ -36,18 +36,14 @@ class MainActivity : AppCompatActivity() {
                 headers: Headers?,
                 response: String?,
                 throwable: Throwable?
-            ) {
-                Log.e(TAG, "onFailure: StatusCode$statusCode", )
-            }
+            ) {}
 
             override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
                 try {
                     val movieJsonArray = json.jsonObject.getJSONArray("results")
                     movies.addAll(Movie.fromJsonArray(movieJsonArray))
-                    movieAdapter.notifyDataSetChanged()
-                    Log.i(TAG, "onSuccess: movies: $movies")
+                    movieAdapter.notifyItemRangeInserted(0, movies.size - 1)
                 } catch (e: JSONException){
-                    Log.e(TAG, "onSuccess: OOPS! Fetching the data raised $e")
                 }
             }
         })
