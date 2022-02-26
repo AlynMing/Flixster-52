@@ -32,14 +32,14 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             Glide
                 .with(context)
-                .load(currentMovie.posterImageUrlPortrait)
+                .load(currentMovie.posterImageUrl)
                 .placeholder(R.drawable.poster_placeholder)
                 .into(holder.moviePoster)
         }
         else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Glide
                 .with(context)
-                .load(currentMovie.posterImageUrlLandScape)
+                .load(currentMovie.posterBackdropUrl)
                 .placeholder(R.drawable.poster_placeholder)
                 .into(holder.moviePoster)
         }
